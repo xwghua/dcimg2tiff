@@ -1,6 +1,6 @@
 # dcimg2tiff.m
 ### Introduction
-Here I wrote a Matlab class file to directly read Hamamatsu dcimg files.\
+Here I wrote a Matlab class file to directly read Hamamatsu dcimg files.
 
 ### Requirements
 - Matlab R2006+
@@ -13,7 +13,7 @@ dc_hdr = dcim.dc_file_header;
 dc_sess_hdr = dcim.dc_sess_header; % The main file info is in this struct
 ```
 `scrname` The filename of the dcimg file.\
-`dcim` The read dcimg structure including all the info of the file.\
+`dcim` The read dcimg structure including all the info of the file.
 - To get portion/all of the content of the .dcimg file
 ```matlab
 dcim = dcimg(scrname,scrind);
@@ -22,7 +22,7 @@ im = dcim.data;
 `scrname` The filename of the dcimg file.\
 `scrind` The indices of the portion slices you want to read. E.g., 1:10, \[1,2,3,4\], etc.\
 `dcim` The read dcimg structure including all the info of the file.\
-`im` The image data you read. This is in the 'data' field of the dcimg struct.\
+`im` The image data you read. This is in the 'data' field of the dcimg struct.
 
 # dcimg2tiff.py
 ### Introduction
@@ -40,8 +40,8 @@ dcimg2tiff(scrname,destfolder)
 ```
 
 `scrname` The filename of the dcimg file.\
-`destfolder` The destination folder to store tif files.\
+`destfolder` The destination folder to store tif files.
 
 # Acknowledgement
-Please acknowledge Xuanwen Hua's contribution if this package is used in your work. Thank you!
+Please acknowledge Xuanwen Hua's contribution if this package is used in your work. For any further questions, please feel free to email me <xwghua@gmail.com> or DM me on Github. Thank you!\
 \- Mar. 24th, 2022
