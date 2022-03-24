@@ -1,6 +1,32 @@
-# dcimg2tiff
+# dcimg2tiff.m
 ### Introduction
-This is a program to transform Hamamatsu dcimg files to multipage tif files.\
+Here I wrote a Matlab class file to directly read Hamamatsu dcimg files.\
+
+### Requirements
+- Matlab R2006+
+
+### Usage
+- To get information from .dcimg file
+```matlab
+dcim = dcimg(scrname);
+dc_hdr = dcim.dc_file_header;
+dc_sess_hdr = dcim.dc_sess_header; % The main file info is in this struct
+```
+`scrname` The filename of the dcimg file.\
+`dcim` The read dcimg structure including all the info of the file.\
+- To get portion/all of the content of the .dcimg file
+```matlab
+dcim = dcimg(scrname,scrind);
+im = dcim.data;
+```
+`scrname` The filename of the dcimg file.\
+`scrind` The indices of the portion slices you want to read. E.g., 1:10, \[1,2,3,4\], etc.\
+`dcim` The read dcimg structure including all the info of the file.\
+`im` The image data you read. This is in the 'data' field of the dcimg struct.\
+
+# dcimg2tiff.py
+### Introduction
+This package also includes a Python program to transform Hamamatsu dcimg files to multipage tif files.\
 <i>\[NOTE\] To avoid large file errors, this program limits the total pixel number of the file within 2^31.</i>
 ### Requirements
 - Python 3.5+
@@ -13,5 +39,9 @@ This is a program to transform Hamamatsu dcimg files to multipage tif files.\
 dcimg2tiff(scrname,destfolder)
 ```
 
-`scrname` The filename of the dcimg file.
-`destfolder` The destination folder to store tif files.
+`scrname` The filename of the dcimg file.\
+`destfolder` The destination folder to store tif files.\
+
+# Acknowledgement
+Please acknowledge Xuanwen Hua's contribution if this package is used in your work. Thank you!
+\- Mar. 24th, 2022
