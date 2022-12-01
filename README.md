@@ -43,5 +43,7 @@ dcimg2tiff(scrname,destfolder)
 `destfolder` The destination folder to store tif files.
 
 # Acknowledgement
-Please acknowledge Xuanwen Hua's contribution if this package is used in your work. For any further questions, please feel free to email me <xwghua@gmail.com> or DM me on Github. Thank you!\
+Please acknowledge Xuanwen Hua's contribution if this package is used in your work. 
+For any further questions, please feel free to DM me on Github. Thank you!\
 \- Mar. 24th, 2022
+PLEASE NOTE THAT I DO NOT USE WECHAT OR ANY CHINESE SOCIAL MEDIA.
