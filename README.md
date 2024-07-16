@@ -2,6 +2,8 @@
 ### Introduction
 Here I wrote a Matlab class file to directly read Hamamatsu dcimg files.
 
+<em><b>Update Jul. 16, 2024  We added support for the new dcimg format acquired by HCImage Ver. > 5.0.</b></em>
+
 ### Requirements
 - Matlab R2006+
 
