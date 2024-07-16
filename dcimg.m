@@ -38,8 +38,8 @@ classdef dcimg
 
         dc_file_header = nan;
         dc_sess_header = nan;
-%         dc_sess_footer = nan;
-%         dc_sess_footer2 = nan;
+        dc_sess_footer = nan;
+        dc_sess_footer2 = nan;
         dc_ts_data = nan;
         dc_fs_data = nan;
         dc_file_path = '';
@@ -50,16 +50,21 @@ classdef dcimg
         dc_target_line = -1;
         dc_first_4px_correction_enabled = true;
         dc_4px = nan;
+        dc_deprecated = false;
     end
     
     methods
         %% =================== dcimg ===================
-        function DCIMGFile = dcimg(file_path,slices)
+        function DCIMGFile = dcimg(file_path,slices,isdeprecated)
             if ~isempty(file_path)
                 DCIMGFile.dc_file_path = file_path;
                 if nargin ==1
                     DCIMGFile = DCIMGFile.dcfunc_parse_header();
                 elseif nargin ==2
+                    DCIMGFile.dc_deprecated = false;
+                    DCIMGFile = DCIMGFile.dcimg_open(slices);
+                elseif nargin ==3
+                    DCIMGFile.dc_deprecated = isdeprecated;
                     DCIMGFile = DCIMGFile.dcimg_open(slices);
                 end
             end
@@ -138,7 +143,11 @@ classdef dcimg
                 DCIMGFile.SESS_HDR_DTYPE,'Offset',DCIMGFile.dc_file_header.header_size,'Repeat',1);
             DCIMGFile.dc_sess_header = dcimg_sess_hdr_mem.Data;
 
-            ii = DCIMGFile.dc_file_header.header_size + 712;
+            if DCIMGFile.dc_deprecated
+                ii = DCIMGFile.dc_file_header.header_size + 712;
+            else
+                ii = DCIMGFile.dc_file_header.header_size + 760;
+            end
             dcimg_crop_info_mem = memmapfile(DCIMGFile.dc_file_path,'Format',...
                 DCIMGFile.NEW_CROP_INFO,'Offset',ii,'Repeat',1);
             crop_info = dcimg_crop_info_mem.Data;
