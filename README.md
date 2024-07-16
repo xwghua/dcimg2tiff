@@ -29,7 +29,10 @@ im = dcim.data;
 # dcimg2tiff.py
 ### Introduction
 This package also includes a Python program to transform Hamamatsu dcimg files to multipage tif files.\
-<i>\[NOTE\] To avoid large file errors, this program limits the total pixel number of the file within 2^31.</i>
+<em>\[NOTE\] To avoid large file errors, this program limits the total pixel number of the file within 2^31.</em>
+
+<em>\[NOTE\]To support the new dcimg format acquired by HCImage Ver. > 5.0, go to `dcimg.py` after the installation, navigate to the function `_parse_header` and change the line `i = self._header_size + 712` to `i = self._header_size + 760`. </em>
+
 ### Requirements
 - Python 3.5+
 - numpy (```pip install numpy```)
